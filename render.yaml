@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: smart-privilege-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn run:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: smart-privilege-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "https://smart-privilege.vercel.app" # You will need to update this to your actual Vercel URL later
+databases:
+  - name: smart-privilege-db
+    databaseName: smart_privilege_card
+    user: render_user

@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-body bg-slate-50 text-slate-900 antialiased overflow-x-hidden;
+}
+
+/* Custom Scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Enhanced Base Components */
+.btn-primary {
+  @apply bg-tn-green text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-green-800 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0;
+}
+
+.btn-secondary {
+  @apply bg-white border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg font-semibold shadow-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-200;
+}
+
+.btn-danger {
+  @apply bg-red-50 text-red-700 border border-red-200 px-5 py-2.5 rounded-lg font-semibold hover:bg-red-100 transition-all duration-200;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow duration-300;
+}
+
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/50 shadow-lg rounded-xl p-6;
+}
+
+.input {
+  @apply w-full border border-slate-300 bg-slate-50 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-tn-green focus:border-transparent outline-none transition-all duration-200 hover:bg-white;
+}
+
+.badge {
+  @apply inline-flex px-2.5 py-1 rounded-md text-xs font-semibold tracking-wide border;
+}
+
+/* Table styles for Admin/Helpdesk */
+.modern-table {
+  @apply w-full text-left border-collapse;
+}
+.modern-table th {
+  @apply bg-slate-50 text-slate-500 font-semibold text-xs uppercase tracking-wider py-3 px-4 border-b border-slate-200;
+}
+.modern-table td {
+  @apply py-3 px-4 border-b border-slate-100 text-sm;
+}
+.modern-table tbody tr {
+  @apply hover:bg-slate-50/80 transition-colors;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: slideUpFade 0.4s ease-out forwards;
+}
+
+/* Legacy Portal styles from before */
+.portal-btn-primary {
+  @apply bg-tn-green text-white font-semibold rounded-full hover:bg-green-800 transition shadow-md px-5 py-2.5;
+}
+
+.carousel-arrow {
+  @apply absolute top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-lg bg-tn-green/80 text-white flex items-center justify-center hover:bg-tn-green transition backdrop-blur-sm;
+}
+
+.hero-pattern {
+  background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+.hero-bg-fade {
+  animation: heroFadeIn 0.8s ease-out;
+}
+
+.gov-tricolor-thin {
+  border-top: 3px solid #ff9933;
+  border-bottom: 3px solid #138808;
+}
+
+.gov-top-bar-inner {
+  background: #0d6b3a;
+  color: #fff;
+}
+
+.gov-footer {
+  background: linear-gradient(180deg, #0d6b3a 0%, #064a28 100%);
+}
+
+.gov-btn-primary {
+  @apply bg-tn-green text-white font-semibold hover:bg-green-900 transition shadow px-5 py-2.5 rounded-md;
+}
+
+.gov-photo-frame {
+  @apply rounded-lg overflow-hidden border-4 border-tn-gold/50 shadow-lg bg-gray-100;
+}
+
+.gov-announcement {
+  @apply bg-gradient-to-br from-amber-50 to-green-50 border-2 border-tn-gold/30;
+}
+
+/* 3D Smart Card specific */
+.smart-card-bg {
+  background: linear-gradient(135deg, #0d6b3a 0%, #084c28 50%, #0d6b3a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.smart-card-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.2) 100%);
+  pointer-events: none;
+}
+.privilege-card-3d {
+  perspective: 1000px;
+}
+.privilege-card-mock {
+  transform: rotateY(-6deg) rotateX(2deg);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.privilege-card-3d:hover .privilege-card-mock {
+  transform: rotateY(0deg) rotateX(0deg);
+}
