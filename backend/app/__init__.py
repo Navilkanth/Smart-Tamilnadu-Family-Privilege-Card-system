@@ -18,6 +18,16 @@ def create_app(config_name=None):
 
     register_blueprints(app)
 
+    # Automatically create database tables and seed initial data at startup
+    with app.app_context():
+        try:
+            db.create_all()
+            from app.seed import seed_database
+            seed_database()
+            app.logger.info("Database checked, initialized, and seeded successfully!")
+        except Exception as exc:
+            app.logger.error(f"Error initializing/seeding database: {exc}")
+
     @app.get("/api/health")
     def health():
         return {"status": "ok", "service": "Smart TN Family Privilege Card API"}
